@@ -8,44 +8,35 @@ Objetivo    : Sentença Dançante
 Aprendizado : strings
 -------------------------------------------------------------------------- */
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-int main(){
-    char sentence[51];
-    int maiuscula = 1;
+int main()
+{
+    char cifra[51];
 
-    while(fgets(sentence, 51, stdin) != NULL)
+    while(fgets(cifra, 51, stdin) != NULL)
     {
-        for(int i = 0; sentence[i] != '\0'; i++)
+        int controle = 0;
+
+        for(int i = 0; i < strlen(cifra); i++)
         {
-            if(sentence[i] == ' ')
-            {
+            if(cifra[i] == ' ')
                 continue;
-            }
 
-            if(maiuscula == 1)
-            {
-                if(sentence[i] >= 'a' && sentence[i] <= 'z')
-                {
-                    sentence[i] = sentence[i] - 32;
-                }
-
-                maiuscula = 0;
-            }
+            if(controle % 2 == 0)
+                cifra[i] = toupper(cifra[i]);
             else
-            {
-                if(sentence[i] >= 'A' && sentence[i] <= 'Z')
-                {
-                    sentence[i] = sentence[i] + 32;
-                }
+                cifra[i] = tolower(cifra[i]);
 
-                maiuscula = 1;
-            }
+            controle++;
         }
 
-        printf("%s", sentence);
-
-        maiuscula = 1;
+        printf("%s", cifra);
     }
+
+    return 0;
+}
 
     return 0;
 }
