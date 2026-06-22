@@ -8,24 +8,28 @@ Objetivo    : cifra de cesar
 Aprendizado : strings
 Pergunta de segunda ordem: 
 -------------------------------------------------------------------------- *
-  #include <string.h>
 #include <stdio.h>
+#include <string.h>
 
-int main(){
-    char alfabeto[51];
-    int N, deslocamento;
+int main()
+{
+    int n;
+    char cifra[51];
+    int desloc;
 
-    scanf("%d\n", &N);
+    scanf("%d", &n);
 
-    for(int i = 0; i < N; ++i){
-        scanf("%[^\n]\n", &alfabeto);
-        scanf("%d\n", &deslocamento);
+    for(int k = 0; k < n; k++)
+    {
+        scanf("%s", cifra);
+        scanf("%d", &desloc);
 
-        for(int j = 0; j < strlen(alfabeto); ++j){
-            alfabeto[j] = ((alfabeto[j] - 'A' - deslocamento + 26) % 26) + 'A';
+        for(int i = 0; i < strlen(cifra); i++)
+        {
+            cifra[i] = ((cifra[i] - 'A' - desloc + 26) % 26) + 'A';
         }
 
-        printf("%s\n", alfabeto);
+        printf("%s\n", cifra);
     }
 
     return 0;
